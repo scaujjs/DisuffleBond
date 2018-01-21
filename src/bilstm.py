@@ -22,6 +22,8 @@ hidden_dim = 50
 batch_size = 128
 model_name = "blstm_diff_ssb_v2d"
 
+
+
 ##create the model
 def modelForSSBOnd():
 
