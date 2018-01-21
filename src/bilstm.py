@@ -18,7 +18,7 @@ np.set_printoptions(threshold=1000)
 
 
 
-
+##6
 input_dim = 100
 output_dim = 3
 hidden_dim = 50
