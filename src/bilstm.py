@@ -16,6 +16,9 @@ from keras.models import Model
 from keras import optimizers
 np.set_printoptions(threshold=1000)
 
+
+
+## shangjie has been here
 input_dim = 100
 output_dim = 3
 hidden_dim = 50
