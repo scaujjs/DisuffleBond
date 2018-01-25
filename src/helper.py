@@ -4,11 +4,10 @@ import os
 import PIL.Image as image
 import numpy as np
 import random
-
+np.set_printoptions(threshold=np.NaN)
 import tensorflow as tf
 
 pOOD=os.getcwd()+'/../'
-
 ##215768(this is the num of Cys totally)
 ##143796(this is the num of Cys in bond)
 ## 71972(this is the num of Cys not in bond)
@@ -422,6 +421,100 @@ def data_generaterForSStage1OneHot(batch_size):
 
                 yield X,T
 
+def generateTrainingDataSSStage3():
+    ##the index here is fasta format, which mean 1 is the first letter
+    ## and the value of the window size must be odd
+    def getSubSeq(seq,index,windowSize=21):
+        subSeq=''
+        haldWindowsize=windowSize//2
+        for i in range(windowSize):
+            tempIndex=index-1-haldWindowsize+i
+            if 0<=tempIndex<=len(seq)-1:
+                subSeq=subSeq+seq[tempIndex]
+            else:
+                subSeq+='X'
+        return subSeq
+
+    def getExampleInASeq(seq, pairs):
+        example=list()
+        tempCys=0
+        for am in seq:
+            if am=='C':
+                tempCys+=1
+        if tempCys==len(pairs)*2:
+            pass
+        else:
+            for i in range(len(seq)):
+                if seq[i]=='C':
+                    index=i+1
+                    T=[1,0]
+                    for a,b in pairs:
+                        if index==a or index==b:
+                            T=[0,1]
+                            break
+                    subSeq=getSubSeq(seq,index)
+                    example.append((subSeq,T))
+        return example
+
+    def convertWord2Vec(example):
+        finaalyexample=list()
+        #print('_____________')
+        for seq,t in example:
+            ##print(seq,t)
+            errorFlag=0
+            X = np.ones((19, 100), np.float16) * (0)
+            for i in range(len(seq)-2):
+                aaw = getaminoAcidword(seq, i + 2)
+                if aaw not in dictOfword2vect:
+                    errorFlag=1
+                    break
+                X[i] = dictOfword2vect[aaw]
+            if not errorFlag:
+                finaalyexample.append((X,t))
+        random.shuffle(finaalyexample)
+        return finaalyexample
+
+    (listOfKey, listOfSeq, listOfPairs)=loadTrainData()
+    ## T is in the 1 of 101, 1 means there is a ss, 0 means not
+    Xs=np.zeros((100000,19,100),np.float16)
+    Ts=np.zeros((100000,2),np.float16)
+    Xs_v=np.zeros((30000,19,100),np.float16)
+    Ts_v=np.zeros((30000,2),np.float16)
+    Xs_t=np.zeros((27000,19,100),np.float16)
+    Ts_t=np.zeros((27000,2),np.float16)
+
+    index=0
+
+    for i in range(len(listOfPairs)):
+        seq=listOfSeq[i]
+        pairs=listOfPairs[i]
+        example=getExampleInASeq(seq,pairs)
+        finalExm=convertWord2Vec(example)
+        for X,T in finalExm:
+            ##print(X,T)
+            if index<100000:
+                Xs[index,:,:]=X
+                Ts[index]=T
+            if 100000<=index<130000:
+                Xs_v[index-100000,:,:]=X
+                Ts_v[index-100000]=T
+            if 130000<=index<157000:
+                Xs_t[index-130000,:,:]=X
+                Ts_t[index-130000]=T
+
+            index += 1
+
+            if index%10000==0:
+                print(index)
+    np.save(pOOD+'data/trainSStage3/X.data',Xs)
+    np.save(pOOD+'data/trainSStage3/T.data',Ts)
+
+    np.save(pOOD+'data/trainSStage3/Xv.data',Xs_v)
+    np.save(pOOD+'data/trainSStage3/Tv.data',Ts_v)
+
+    np.save(pOOD+'data/trainSStage3/Xt.data',Xs_t)
+    np.save(pOOD+'data/trainSStage3/Tt.data',Ts_t)
+
 from keras import backend as K
 
 INTERESTING_CLASS_ID = 1  # Choose the class of interest
@@ -467,7 +560,7 @@ def single_class_accuracyC(y_true, y_pred):
 
 
 
-    return acc
+    return ac
 
 
 if 0:
@@ -494,53 +587,7 @@ if 0:
         print(result.eval())
         accuracy_mask = K.cast(K.equal(class_id_true, INTERESTING_CLASS_ID), dtype=tf.float32)
         print(accuracy_mask.eval())
-'''
 
-
-
-    tfi =tf.zeros([1], dtype=tf.int32)
-    thredholdi=int(y_true.get_shape()[0])
-    tfj =tf.zeros([1], dtype=tf.int32)
-    thredholdj=int(y_true.get_shape()[1])
-
-    def cond(tfi,tfj,counter0,counter1):
-        return tf.logical_and(tfi< thredholdi,tfj<thredholdj)[0]
-
-    def body(tfi,tfj,counter0,counter1):
-        print(1)
-        print(tfi[0])
-        print(t)
-        print(t[tfi[0]][tfj[0]])
-        def t_fn():
-            counter1[tfi[0]]=counter1[tfi[0]]+tf.constant(0,dtype=tf.int64)
-
-            return counter1[tfi,1]
-        def f_fn():
-            return counter1
-        counter1=tf.cond(tf.greater(t[tfi[0]][tfj[0]],tf.constant(0,dtype=tf.int64)),true_fn=t_fn,false_fn=f_fn)
-
-
-
-        tfj+=one
-        tfi+=one
-        if tfj==thredholdj:
-            tfj=tfj-thredholdj
-
-        return tfi,tfj,counter0,counter1
-
-    [tfi, tfj, counter0, counter1]=tf.while_loop(cond,body,(tfi,tfj,counter0,counter1))
-
-    return counter0/counter1
-    
-    
-    a=np.array([[[1,3,3],[1,2,3],[1,2,3]],[[1,2,3],[1,2,3],[1,2,3]]])
-atf=tf.constant(a)
-b=tf.constant([0,1,1])
-c=a*b
-with tf.Session() as sess:
-    print(c.eval())
-
-'''
 ##statistic description
 if 0 :
     if 0:
@@ -601,9 +648,35 @@ if 0 :
 
 
 
+def testGet4metris(model,X_v,T_v):
+    T_v=np.argmax(T_v,1)
+    Y_v = model.predict(X_v)
+    print(Y_v.shape)
+    Y_v = np.argmax(Y_v, 1)
+    print(Y_v.shape)
+    print(T_v.shape)
+    print(T_v)
+    print(Y_v)
 
-##generateTrainingDataSSbondOdd()
+    TP = 0
+    FP = 0
+    FN = 0
+    TN = 0
 
-##generteTrainingDataSStage1()
+    for i in range(X_v.shape[0]):
+        if T_v[i] == 0 and Y_v[i] == 0:
+            TP += 1
+        if T_v[i] == 1 and Y_v[i] == 1:
+            TN += 1
+        if T_v[i] == 1 and Y_v[i] == 0:
+            FP += 1
+        if T_v[i] == 0 and Y_v[i] == 1:
+            FN += 1
+    print(TP,FP,FN,TN)
+    acc = (TP + TN) * 1.0 / X_v.shape[0]
+    sensitivity = TP * 1.0 / (TP + FN)
+    specificity = TN * 1.0 / (TN + FP)
+    MCC = (TP * TN - FP * FN) * 1.0 / pow((TP + FN) * 1.0 * (TP + FP) * (TN + FP) * (TN + FN), 0.5)
+    print(acc, sensitivity, specificity, MCC)
+    return (acc, sensitivity, specificity, MCC)
 
-##generateTrainingDataSSStage1OneHot()

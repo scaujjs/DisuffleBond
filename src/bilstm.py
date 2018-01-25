@@ -9,10 +9,12 @@ from keras.layers import Input,Conv2D, MaxPooling2D,UpSampling2D,Dense, Dropout
 from keras.layers.core import  Activation,  Flatten, Reshape
 import helper
 import numpy as np
+np.set_printoptions(threshold=np.nan)
 import random
 import os
-from keras.models import Model
 
+from keras.models import Model
+from keras.utils.vis_utils import plot_model
 from keras import optimizers
 np.set_printoptions(threshold=1000)
 
@@ -132,7 +134,7 @@ def modelForSStage1():
 
 
 ##this block used to triain
-if 1:
+if 0:
 	modelName='modelForSStage_1'
 	model=modelForSStage1()
 	Xs = np.load(helper.pOOD + 'data/trainSStage1/X' + str(23) + '.data.npy')
@@ -140,15 +142,30 @@ if 1:
 	X_v =Xs
 	T_v =Ts
 
-	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	##model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
 	maxacc=0
 	##model.load_weights(helper.pOOD + 'MODEL/keras/blstm_diff_ssb_v2d_3')
 	for i in range(1):
 
-		model.fit_generator(helper.data_generaterForSStage1(128), epochs=10, steps_per_epoch=8*22 ,validation_data=[X_v,T_v],
+		model.fit_generator(helper.data_generaterForSStage1(128), epochs=100, steps_per_epoch=8*22 ,validation_data=[X_v,T_v],
 							)##callbacks=[EarlyStopping(patience=3)]
 		##crightratio,rbondrightratio=test()
 		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)
+
+if 0:
+	modelName = 'modelForSStage_1'
+	model = modelForSStage1()
+	Xs = np.load(helper.pOOD + 'data/trainSStage1/X' + str(24) + '.data.npy')
+	Ts = np.load(helper.pOOD + 'data/trainSStage1/T' + str(24) + '.data.npy')
+	X_v = Xs
+	T_v = Ts
+
+	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	maxacc = 0
+	helper.testGet4metris(model,X_v,T_v)
+
+
+
 
 
 def modelForSStage1OneHot():
@@ -160,6 +177,7 @@ def modelForSStage1OneHot():
 	return model
 
 
+
 ##this block used to triain
 if 0:
 	modelName='modelForSStageOnehot_1'
@@ -169,12 +187,67 @@ if 0:
 	X_v =Xs
 	T_v =Ts
 
-	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	##model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
 	maxacc=0
 	##model.load_weights(helper.pOOD + 'MODEL/keras/blstm_diff_ssb_v2d_3')
 	for i in range(1):
 
-		model.fit_generator(helper.data_generaterForSStage1OneHot(128), epochs=10, steps_per_epoch=8*22 ,validation_data=[X_v,T_v],
+		model.fit_generator(helper.data_generaterForSStage1OneHot(128), epochs=100, steps_per_epoch=8*22 ,validation_data=[X_v,T_v],
 							)##callbacks=[EarlyStopping(patience=3)]
 		##crightratio,rbondrightratio=test()
 		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)
+
+if 0:
+	modelName = 'modelForSStageOnehot_1'
+	model = modelForSStage1OneHot()
+	Xs = np.load(helper.pOOD + 'data/trainSStage1OneHot/X' + str(24) + '.data.npy')
+	Ts = np.load(helper.pOOD + 'data/trainSStage1OneHot/T' + str(24) + '.data.npy')
+	X_v = Xs
+	T_v = Ts
+
+	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	maxacc = 0
+	helper.testGet4metris(model,X_v,T_v)
+
+
+def modelForSStage3():
+	model = Sequential()
+	model.add(Masking(mask_value=0, input_shape=(19, 100)))
+	model.add(Bidirectional(LSTM(50,dropout=0.2,kernel_regularizer=regularizers.l2(0.005))))
+	model.add((Dense(2, activation='softmax')))
+	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
+	return model
+
+
+##this block used to triain
+if 0:
+	modelName='modelForSStage3'
+	model=modelForSStage3()
+
+	X_v = np.load(helper.pOOD + 'data/trainSStage3/Xv.data.npy')
+	T_v=np.load(helper.pOOD + 'data/trainSStage3/Tv.data.npy')
+
+	Xs=np.load(helper.pOOD + 'data/trainSStage3/X.data.npy')
+	Ts=np.load(helper.pOOD + 'data/trainSStage3/T.data.npy')
+
+	##model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	maxacc=0
+	##model.load_weights(helper.pOOD + 'MODEL/keras/blstm_diff_ssb_v2d_3')
+	for i in range(1):
+		model.fit(Xs,Ts,128, epochs=30,validation_data=[X_v,T_v]
+							,callbacks=[EarlyStopping(patience=3)])
+		##crightratio,rbondrightratio=test()
+		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)
+
+
+if 1:
+	modelName = 'modelForSStage3'
+	model = modelForSStage3()
+	Xs=np.load(helper.pOOD + 'data/trainSStage3/Xt.data.npy')
+	Ts=np.load(helper.pOOD + 'data/trainSStage3/Tt.data.npy')
+	X_v = Xs
+	T_v = Ts
+
+	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	maxacc = 0
+	helper.testGet4metris(model,X_v,T_v)
