@@ -74,7 +74,7 @@ def convert2word2vec(seq, pairs):
     return X, T
 
 
-if 0:
+if 1:
     X_test=np.zeros((417,600,100))
     T_test=np.zeros((417,2))
 
@@ -148,7 +148,7 @@ if 0:
 
     helper.testGet4metris(model,X_test,T_test)
 
-if 1:
+if 0:
     ##the index here is fasta format, which mean 1 is the first letter
     ## and the value of the window size must be odd
     def getSubSeq(seq,index,windowSize=21):
