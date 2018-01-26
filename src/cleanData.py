@@ -17,6 +17,7 @@ if(0):
     text=list()
     proteinSeq=list()
     proteinName=list()
+
     for line in open(pathOfSequence):
         text.append(line)
 
@@ -62,6 +63,7 @@ if(0):
 
 ## this block clean Disulfide bond
 if(0):
+
     pair = r"DISULFID [0-9]+ [0-9]+"
     dis=r"DISULFID"
     lines=list()
