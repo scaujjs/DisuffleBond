@@ -21,6 +21,12 @@ pOOD=os.getcwd()+'/../'
 ##['M', 'K', 'V', 'L', 'I', 'S', 'P', 'N', 'G', 'A', 'R', 'H', 'D', 'Q', 'W', 'E', 'C', 'F', 'T', 'Y', 'X', 'U']
 ##there 22 type of amino acid
 
+
+
+
+
+
+
 aminoAcidDict=['M', 'K', 'V', 'L', 'I', 'S', 'P', 'N', 'G', 'A', 'R', 'H', 'D', 'Q', 'W', 'E', 'C', 'F', 'T', 'Y', 'X', 'U']
 
 ##this block use to red protein word2vec
