@@ -152,7 +152,7 @@ if 0:
 		##crightratio,rbondrightratio=test()
 		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)
 
-if 0:
+if 1:
 	modelName = 'modelForSStage_1'
 	model = modelForSStage1()
 	Xs = np.load(helper.pOOD + 'data/trainSStage1/X' + str(24) + '.data.npy')

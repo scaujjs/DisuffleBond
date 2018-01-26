@@ -66,15 +66,28 @@ def convert2word2vec(seq):
     return X
 
 if 1:
-    X_test=np.zeros((261,600,100))
-    T_test=np.zeros((261,2))
+    examples=list()
+    for i in range(len(trainExample)):
+        name=trainExample[i][0]
+        seq=trainExample[i][1]
+        Ti=trainExample[i][2]
+        Xi=convert2word2vec(seq)
+        examples.append((name,Xi,Ti))
 
 
-    for i in range(261):
+    X_test=np.zeros((len(trainExample),600,100),np.float32)
+    T_test=np.zeros((len(trainExample),2),np.float32)
+    for i in range(len(trainExample)):
         seq=trainExample[i][1]
         Xi=convert2word2vec(seq)
         X_test[i]=Xi
         T_test[i]=trainExample[i][2]
+
+
+
+
+
+
 
     print(X_test.shape)
     print(T_test.shape)

@@ -75,23 +75,31 @@ def convert2word2vec(seq, pairs):
 
 
 if 1:
-    X_test=np.zeros((417,600,100))
-    T_test=np.zeros((417,2))
 
 
-    for i in range(417):
+
+
+    examples=list()
+    for i in range(len(listOfkey)):
+        name=listOfkey[i]
         seq=dictOfProtein[listOfkey[i]]
         bond=dictOfBond[listOfkey[i]]
         Xi,Ti=convert2word2vec(seq,bond)
-        X_test[i]=Xi
-        T_test[i]=Ti
+        examples.append((name,Xi,Ti))
+
+    X_test=np.zeros((len(examples),600,100),np.float32)
+    T_test=np.zeros((len(examples),2),np.float32)
+    for i in range(len(examples)):
+        name,Xi,Ti= examples[i]
+        X_test[i]=examples[i][1]
+        T_test[i]=examples[i][2]
 
     print(X_test.shape)
     print(T_test.shape)
     input_dim = 100
     output_dim = 2
     hidden_dim = 50
-    batch_size = 128
+    batch_size=128
     model_name = 'modelForSStage_1'
 
     model = Sequential()
