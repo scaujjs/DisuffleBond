@@ -140,37 +140,44 @@ if(0):
         if len(bonds)>1:
             numOfMoreThan+=1
     print numOfMoreThan
-
-numOFhuman=0
-specis=dict()
-specisNameP =r'OS=.*GN='
-
-
-##r"(?<=<h1>).+?(?=<h1>)"
-line='>sp|Q14524|SCN5A_HUMAN Sodium channel protein type 5 subunit alpha OS=Homo sapiens GN=SCN5A PE=1 SV=2'
+if 0:
+    numOFhuman=0
+    specis=dict()
+    specisNameP =r'OS=.*GN='
 
 
-for line in open('../data/sequene.fasta'):
-    specisName = re.findall(specisNameP, line)
-    if len(specisName)>0:
-        specisName=specisName[0]
-        specisName = re.findall(specisNameP, line)[0]
-        specisName = specisName.replace("OS=", '')
-        specisName = specisName.replace("GN=", '')
-        specisName = specisName.replace(" ", '')
-        if specisName in specis:
-            specis[specisName]+=1
-        else:
-            specis[specisName]=1
-specis=specis.items()
-specis=[[v[1],v[0]] for v in specis]
-specis.sort(reverse=True)
-
-total=0
-for value,key in specis:
-    print(key,value)
-    total=total+value
-print()
-print(total)
+    ##r"(?<=<h1>).+?(?=<h1>)"
+    line='>sp|Q14524|SCN5A_HUMAN Sodium channel protein type 5 subunit alpha OS=Homo sapiens GN=SCN5A PE=1 SV=2'
 
 
+    for line in open('../data/sequene.fasta'):
+        specisName = re.findall(specisNameP, line)
+        if len(specisName)>0:
+            specisName=specisName[0]
+            specisName = re.findall(specisNameP, line)[0]
+            specisName = specisName.replace("OS=", '')
+            specisName = specisName.replace("GN=", '')
+            specisName = specisName.replace(" ", '')
+            if specisName in specis:
+                specis[specisName]+=1
+            else:
+                specis[specisName]=1
+    specis=specis.items()
+    specis=[[v[1],v[0]] for v in specis]
+    specis.sort(reverse=True)
+
+    total=0
+    for value,key in specis:
+        print(key,value)
+        total=total+value
+    print()
+    print(total)
+
+import os
+if 1:
+    total=0
+    files =os.listdir("../PDB")
+    for file in files:
+        if 'bundle' in file:
+            total+=1
+    print(total)

@@ -164,10 +164,6 @@ if 1:
 	maxacc = 0
 	helper.testGet4metris(model,X_v,T_v)
 
-
-
-
-
 def modelForSStage1OneHot():
 	model = Sequential()
 	model.add(Masking(mask_value=0, input_shape=(600, 66)))
@@ -175,8 +171,6 @@ def modelForSStage1OneHot():
 	model.add((Dense(2, activation='softmax')))
 	model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['acc'])
 	return model
-
-
 
 ##this block used to triain
 if 0:
@@ -240,7 +234,7 @@ if 0:
 		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)
 
 
-if 1:
+if 0:
 	modelName = 'modelForSStage3'
 	model = modelForSStage3()
 	Xs=np.load(helper.pOOD + 'data/trainSStage3/Xt.data.npy')
@@ -251,3 +245,29 @@ if 1:
 	model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
 	maxacc = 0
 	helper.testGet4metris(model,X_v,T_v)
+
+
+if 1:
+	modelName = 'modelForSStage1id30_word2vec'
+	model = modelForSStage1()
+	plot_model(model,"modelOfStage1",show_shapes=1)
+
+	X = np.load(helper.pOOD + 'data/trainSStage1id30/X.data.npy')
+	T = np.load(helper.pOOD + 'data/trainSStage1id30/T.data.npy')
+
+	Xs=X[0:2500]
+	Ts=T[0:2500]
+
+	X_v=X[2500:3000]
+	T_v=T[2500:3000]
+
+
+
+	##model.load_weights(helper.pOOD + 'MODEL/keras/' + modelName)
+	maxacc = 0
+	##model.load_weights(helper.pOOD + 'MODEL/keras/blstm_diff_ssb_v2d_3')
+	for i in range(1):
+		model.fit(Xs, Ts, 32, epochs=30, validation_data=[X_v, T_v]
+				  , callbacks=[EarlyStopping(patience=3)])
+		##crightratio,rbondrightratio=test()
+		model.save_weights(helper.pOOD + 'MODEL/keras/' + modelName, overwrite=True)

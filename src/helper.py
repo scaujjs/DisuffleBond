@@ -48,8 +48,8 @@ def parseLineOfBond(line,reduceReplicate=False,reduceLine=False):
     pairs=list()
     items.remove(items[0])
     for item in items:
-        stringPair=item.split(' ')
-        pair=(int(stringPair[1]),int(stringPair[2]))
+        stringPair=item.split('_')
+        pair=(int(stringPair[0]),int(stringPair[1]))
         if reduceReplicate and pair[0]==pair[1]:
             flagOfPass=True
             pass
@@ -59,7 +59,6 @@ def parseLineOfBond(line,reduceReplicate=False,reduceLine=False):
         return (key,[])
     else:
         return (key,pairs)
-
 
 ##in this block I fillter seq longer than 600, stanger bond, interchain bond
 ## last 24000 seq
@@ -76,7 +75,7 @@ def generateNewRawData():
                 errorFlag =1
                 break
         return errorFlag
-    for line in open(pOOD+'data/cleanSequene.data'):
+    for line in open(pOOD+'NewData/finalSeq'):
 
         items=line.split()[0].split(',')
         if len(items[1])>599:
@@ -88,7 +87,7 @@ def generateNewRawData():
 
     num=0
     numOfPairs=0
-    for line in open(pOOD+'data/bond.data'):
+    for line in open(pOOD+'NewData/finalBond'):
         (key,pairs)=parseLineOfBond(line,reduceReplicate=True,reduceLine=True)
         if len(pairs)>0:
             dictOfPair[key]=pairs
@@ -133,9 +132,9 @@ def generateNewRawData():
         listOfnewPair.append(lineOfnewPair)
 
 
-    fileOfNewSeq=open(pOOD+'data/newSeq.data','w')
+    fileOfNewSeq=open(pOOD+'data/seqId30.data','w')
     fileOfNewSeq.writelines(listOfnewSeq)
-    fileOfNewPair=open(pOOD+'data/newBond.data','w')
+    fileOfNewPair=open(pOOD+'data/bondId30.data','w')
     fileOfNewPair.writelines(listOfnewPair)
 
 
@@ -182,6 +181,28 @@ def loadTrainData():
         listOfKey.append(key)
 
     for line in open(pOOD+'data/newBond.data'):
+        items=line.strip().split(',')
+        pairs=list()
+        for i in range(len(items)-1):
+            strpair=items[i+1].split('_')
+            pair=(int(strpair[0]),int(strpair[1]))
+            pairs.append(pair)
+        listOfPairs.append(pairs)
+
+    return(listOfKey,listOfSeq,listOfPairs)
+
+
+def loadTrainDataId30():
+    listOfKey=list()
+    listOfSeq=list()
+    listOfPairs=list()
+
+    for line in open(pOOD+'data/seqId30.data'):
+        key,seq=line.strip().split(',')
+        listOfSeq.append(seq)
+        listOfKey.append(key)
+
+    for line in open(pOOD+'data/bondId30.data'):
         items=line.strip().split(',')
         pairs=list()
         for i in range(len(items)-1):
@@ -521,6 +542,53 @@ def generateTrainingDataSSStage3():
     np.save(pOOD+'data/trainSStage3/Xt.data',Xs_t)
     np.save(pOOD+'data/trainSStage3/Tt.data',Ts_t)
 
+loadTrainDataId30
+
+def generteTrainingDataSStage1id30():
+    def convert2word2vec(seq, pairs):
+        tempCys=0
+        for am in seq:
+            if am=='C':
+                tempCys+=1
+        if tempCys==len(pairs)*2:
+            T=1
+        else:
+            T=0
+
+
+        input_length = len(seq) - 2
+        X = np.ones((600, 100), np.float16) * (0)
+        for i in range(input_length):
+            aaw = getaminoAcidword(seq, i + 2)
+
+            X[i] = dictOfword2vect[aaw]
+
+        return X, T
+
+    (listOfKey, listOfSeq, listOfPairs)=loadTrainDataId30()
+    ## T is in the 1 of 101, 1 means there is a ss, 0 means not
+    Xs=np.zeros((3474,600,100),np.float16)
+    Ts=np.zeros((3474,2),np.float16)
+    index=0
+
+    for i in range(len(listOfPairs)):
+        seq=listOfSeq[i]
+        pairs=listOfPairs[i]
+        (X,T)=convert2word2vec(seq,pairs)
+
+        Xs[index,:,:]=X[:,:]
+        if T==0:
+
+            Ts[index]=[1,0]
+        else:
+            Ts[index]=[0,1]
+        index+=1
+
+
+    np.save(pOOD+'data/trainSStage1id30/X'+'.data',Xs)
+    np.save(pOOD+'data/trainSStage1id30/T'+'.data',Ts)
+
+
 from keras import backend as K
 
 INTERESTING_CLASS_ID = 1  # Choose the class of interest
@@ -686,3 +754,16 @@ def testGet4metris(model,X_v,T_v):
     print(acc, sensitivity, specificity, MCC)
     return (acc, sensitivity, specificity, MCC)
 
+##generateNewRawData()
+##generteTrainingDataSStage1id30()
+
+(listOfKey,listOfSeq,listOfPairs)=loadTrainDataId30()
+
+
+for i in range(len(listOfKey)):
+    key=listOfKey[i]
+    seq=listOfSeq[i]
+    pair=listOfPairs[i]
+
+    for aa in seq:
+        if aa==""

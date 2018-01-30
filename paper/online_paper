@@ -1,12 +1,15 @@
+
 Predicting disulfide connectivity from protein sequence using multiple sequence feature vectors and secondary structure
+##the research here and research in three stage SVM both use the dataset from [4]
 https://academic.oup.com/bioinformatics/article/23/23/3147/290860#supplementary-data
+
 descripe of the SCOP database
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC102479/
 
 Martelli
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2373728/
 
-how the database generated(the database used in 3-stage analysis)
+[4]how the database generated(the database used in 3-stage analysis)
 https://www.aaai.org/Papers/ISMB/1997/ISMB97-032.pdf
 
 ##Cysteine separations profiles on protein sequences infer disulfide connectivity
@@ -14,3 +17,7 @@ https://academic.oup.com/bioinformatics/article/21/8/1415/249698
 
 ##translate from English to Franch
 http://blog.csdn.net/weixin_36541072/article/details/78434987
+
+
+##description of components in DSSP
+http://swift.cmbi.ru.nl/gv/dssp/
