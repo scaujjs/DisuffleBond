@@ -21,3 +21,13 @@ http://blog.csdn.net/weixin_36541072/article/details/78434987
 
 ##description of components in DSSP
 http://swift.cmbi.ru.nl/gv/dssp/
+
+Prediction of the disulfide bonding state of cysteines in proteins with hidden neural networks
+##three stage use the dataset directly from here
+https://academic.oup.com/peds/article/15/12/951/1563726
+
+
+databse u may use
+##SP39
+##CASP9
+##PDBCYS

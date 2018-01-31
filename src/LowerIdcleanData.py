@@ -357,6 +357,71 @@ if 0:
         listOfItems=parse2getSeqAndBond(file)
         numOfTotal+=len(listOfItems)
     print(numOfTotal)
+if 0:
+    import prody
+    files=os.listdir('../PDB')
+    for file in files:
+        print(file)
+        prody.execDSSP("../PDB/"+file,'../DSSP/'+file[0:-4])
 
-import prody
-prody.execDSSP("4mtz",'../NewData/')
+patternSS='NUMBER OF SS-BRIDGES(TOTAL,INTRACHAIN,INTERCHAIN)'
+patternStart='RESIDUE AA STRUCTURE'
+def pareDSSPfile(path):
+    found=0
+    numOfChains=0
+    numOfTotalSSbond=0
+    numOfIntraBond=0
+    numOfInterBond=0
+    numOfTotalAA=0
+    tempChianId='A'
+    tempChain=''
+    start=0
+    for line in open(path):
+        ##print(line)
+        if patternSS in line:
+            items=line.strip().split(" ")
+            itemUseful=list()
+            for item in items:
+                itemTemp=item.strip()
+                if itemTemp!='':
+                    itemUseful.append()
+            numOfChains=int(itemUseful[1])
+            numOfTotalSSbond=int(itemUseful[2])
+            numOfIntraBond=int(itemUseful[3])
+            numOfInterBond=int(itemUseful[4])
+            numOfTotalAA=int(itemUseful[0])
+        if patternStart in line:
+            start=1
+        if start:
+            itemUseful=list()
+            items=line.split(" ")
+            chainID=''
+            index=''
+            AA=''
+            for item in items:
+                itemTemp=item.strip()
+                if itemTemp!='':
+                    itemUseful.append(itemTemp)
+
+
+            chainID=itemUseful[2]
+            index=itemUseful[1]
+            AA=itemUseful[3]
+
+
+
+
+    return found
+
+files=os.listdir("../DSSP/")
+keys=list()
+seqs=list()
+bonds=list()
+for file in files:
+    ##print(file)
+
+    key,seq,bond=pareDSSPfile("../DSSP/"+file)
+    keys.append(key)
+    seqs.append(seq)
+    bonds.append(bond)
+
