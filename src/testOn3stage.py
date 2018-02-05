@@ -1,7 +1,5 @@
 
-
-##1 0 1 0 1 0 1 0 1 1 1 1 1 0 1 1 1 0 0 1 1 1 1 1 1 1 0 0 1 1 0 0 0 1 0 1 1
-##1 1 0 0 1 0 1 0 0 1 1 1 1 0 1 1 0 0 1 0 0 1 1 0 1 1 0 1 1 0 0 0 0 0 0 0 1
+##(0.6781609195402298, 0.42857142857142855, 0.7696335078534031, 0.1948244716655937)
 import helper
 import numpy as np
 from keras.models import Model
@@ -95,7 +93,7 @@ if 1:
     output_dim = 2
     hidden_dim = 50
     batch_size = 128
-    model_name = 'modelForSStage_1'
+    model_name = 'modelForSStage1DSSP_word2vec'
 
     model = Sequential()
     model.add(Masking(mask_value=0, input_shape=(600, 100)))
@@ -131,7 +129,7 @@ def convert2onehot(seq):
     return X
 
 
-if 1:
+if 0:
     X_test=np.zeros((261,600,66))
     T_test=np.zeros((261,2))
 

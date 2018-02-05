@@ -357,71 +357,231 @@ if 0:
         listOfItems=parse2getSeqAndBond(file)
         numOfTotal+=len(listOfItems)
     print(numOfTotal)
+
 if 0:
     import prody
-    files=os.listdir('../PDB')
+    files=os.listdir('../PDB2')
     for file in files:
         print(file)
-        prody.execDSSP("../PDB/"+file,'../DSSP/'+file[0:-4])
+        if ('.ent') in file:
+            DSSPname=file[3:7]
+        else:
+            DSSPname=file[0:-4]
+        print(DSSPname)
+        prody.execDSSP("../PDB2/"+file,'../DSSP2/'+DSSPname)
+
+
+listOfpidWithChainId=list()
+for line in open('../listOfCulled'):
+    listOfpidWithChainId.append(line.strip())
 
 patternSS='NUMBER OF SS-BRIDGES(TOTAL,INTRACHAIN,INTERCHAIN)'
 patternStart='RESIDUE AA STRUCTURE'
-def pareDSSPfile(path):
-    found=0
-    numOfChains=0
-    numOfTotalSSbond=0
-    numOfIntraBond=0
-    numOfInterBond=0
-    numOfTotalAA=0
-    tempChianId='A'
-    tempChain=''
+def pareDSSPfile(file):
+    examples=list()
     start=0
+    seq=''
+    ###################
+    pid=file[0:-5]
+    ################
+    chainId=''
+    path="../DSSP2/"+file
+    ##print(path)
+
     for line in open(path):
-        ##print(line)
-        if patternSS in line:
-            items=line.strip().split(" ")
-            itemUseful=list()
-            for item in items:
-                itemTemp=item.strip()
-                if itemTemp!='':
-                    itemUseful.append()
-            numOfChains=int(itemUseful[1])
-            numOfTotalSSbond=int(itemUseful[2])
-            numOfIntraBond=int(itemUseful[3])
-            numOfInterBond=int(itemUseful[4])
-            numOfTotalAA=int(itemUseful[0])
         if patternStart in line:
             start=1
+            continue
         if start:
-            itemUseful=list()
-            items=line.split(" ")
-            chainID=''
-            index=''
-            AA=''
-            for item in items:
-                itemTemp=item.strip()
-                if itemTemp!='':
-                    itemUseful.append(itemTemp)
+            aa=line[13:15].strip()
+
+            if aa!='!*':
+                assert len(aa)==1
+            if aa=='!*':
+                examples.append((pid+':'+chainId,seq))
+                seq=''
+            else:
+                chainId=line[10:13].strip().lower()
+                seq+=aa
+    examples.append((pid+':'+chainId,seq))
+    newExamples=list()
+    ##print('helloworld')
+    ##print(examples)
+    for pidcid,seq in examples:
+        if pidcid in listOfpidWithChainId:
+            newExamples.append((pidcid,seq))
+            print(pidcid,seq)
+    return newExamples
 
 
-            chainID=itemUseful[2]
-            index=itemUseful[1]
-            AA=itemUseful[3]
+if 0:
+    files=os.listdir("../DSSP2/")
+    lines=list()
+    num=0
+    for file in files:
+        ##for line in open("../DSSP/"+file,'r'):
+        exampleTemp=pareDSSPfile(file)
+        assert len(exampleTemp)!=0
+        for pidcid,seq in exampleTemp:
+            strTemp=pidcid+','+seq+'\n'
+            lines.append(strTemp)
+            num+=1
+
+        ##seqs.append(pareDSSPfile(file))
+    print(num)
+
+    f=open('../NewData/seqFromDSSPculled25','w')
+    f.writelines(lines)
+    f.close()
+
+if 1:
+    numOfE=0
+    p=r'[a-z]'
+    records=list()
+    bonds=list()
+    newSeq=list()
+    keys=list()
+
+    for line in open('../NewData/seqFromDSSPculled25','r'):
+        key,seq=line.strip().split(',')
+        dictPair=dict()
+        odd=0
+        for aa in seq:
+            if aa=='!':
+                continue
+            if re.match(p,aa):
+                if aa in dictPair:
+                    dictPair[aa]=dictPair[aa]+1
+                else:
+                    dictPair[aa]=1
+
+        for lowcase,value in dictPair.items():
+            if value!=2:
+                odd=1
+        s=seq.replace("!",'')
+        if not odd:
+            bond=list()
+            for lowcase, value in dictPair.items():
+                pair=list()
+                for j in range(len(s)):
+                    if s[j]==lowcase:
+                        pair.append(j)
+                assert len(pair)==2
+                bond.append((pair[0]+1,pair[1]+1))
+            newS=s
+            for lowcase, value in dictPair.items():
+                newS=newS.replace(lowcase,'C')
+            bonds.append(bond)
+            newSeq.append(newS)
+            keys.append(key)
+
+        assert len(newSeq)==len(bonds)
+
+
+    for i in range(len(newSeq)):
+        records.append((keys[i],newSeq[i],bonds[i]))
+
+    print(len(records))
+
+    if 1:
+        import random
+        random.shuffle(records)
+        newSeqs=list()
+        newBonds=list()
+        for i in range(len(records)):
+            newSeqsStr=records[i][0]+','+records[i][1]+'\n'
+            bondStr=records[i][0]+','
+            print(bondStr)
+            for p1,p2 in records[i][2]:
+                pairStr=str(p1)+'_'+str(p2)
+                bondStr+=(pairStr+',')
+            bondStr=bondStr[0:-1]+'\n'
+            newSeqs.append(newSeqsStr)
+            newBonds.append(bondStr)
+
+        f=open("../NewData/newSeqFromPDBculled25",'w')
+        f.writelines(newSeqs)
+        f.close()
+        f=open("../NewData/newBondsFromPDBculled25",'w')
+        f.writelines(newBonds)
+        f.close()
+
+def loadTrainDataDSSP():
+    listOfKey=list()
+    listOfSeq=list()
+    listOfPairs=list()
+
+    for line in open("../NewData/newSeqFromDSSP"):
+        key,seq=line.strip().split(',')
+        listOfSeq.append(seq)
+        listOfKey.append(key)
+    for line in open("../NewData/newBondsFromDSSP"):
+        items=line.strip().split(",")
+        pairs=list()
+        assert len(items)>0
+        for i in range(len(items)-1):
+            p1,p2=items[i+1].split("_")
+            pairs.append((int(p1),int(p2)))
+        listOfPairs.append(pairs)
+
+    return(listOfKey,listOfSeq,listOfPairs)
+
+listOfKey,listOfSeq,listOfPairs=loadTrainDataDSSP()
+
+if 0:
+    typeOfStructure=list()
+    newlistOfKey = list()
+    newlistOfSeq = list()
+    newlistOfPairs = list()
+    for i in range(len(listOfSeq)):
+        for p1,p2 in listOfPairs[i]:
+            assert listOfSeq[i][p1-1]=='C'
+            assert listOfSeq[i][p2-1]=='C'
+        if listOfKey[i][0:4] not in typeOfStructure:
+            typeOfStructure.append(listOfKey[i][0:4])
+            newlistOfKey.append(listOfKey[i])
+            newlistOfSeq.append(listOfSeq[i])
+            newlistOfPairs.append(listOfPairs[i])
+    print(len(newlistOfPairs))
+    recordOfSeqlist=list()
+    recordOfBonds=list()
+    for i in range(len(newlistOfPairs)):
+        recordStrOfSeq=newlistOfKey[i]+','+newlistOfSeq[i]+'\n'
+        recordStrOfBond=newlistOfKey[i]+','
+        for p1,p2 in newlistOfPairs[i]:
+            recordStrOfBond+=(str(p1)+"_"+str(p2)+',')
+        recordStrOfBond=recordStrOfBond[0:-1]+'\n'
+        recordOfSeqlist.append(recordStrOfSeq)
+        recordOfBonds.append(recordStrOfBond)
+    assert len(recordOfSeqlist)==len(recordOfBonds)
+
+
+    f=open("../NewData/newSeqFromPDB_unique",'w')
+    f.writelines(recordOfSeqlist)
+    f.close()
+    f=open("../NewData/newBondsFromPDB_unique",'w')
+    f.writelines(recordOfBonds)
+    f.close()
 
 
 
+    print(len(typeOfStructure))
 
-    return found
 
-files=os.listdir("../DSSP/")
-keys=list()
-seqs=list()
-bonds=list()
-for file in files:
-    ##print(file)
+if 0:
+    import tarfile
+    import shutil
 
-    key,seq,bond=pareDSSPfile("../DSSP/"+file)
-    keys.append(key)
-    seqs.append(seq)
-    bonds.append(bond)
+    filesOfRa = os.listdir('../ra/')
+    filesOfPSB2 = os.listdir('../PDB2/')
+    for file in filesOfPSB2:
+        if '.gz' in file:
+            PDBid=file[0:4]
+            if PDBid+'.pdb' in filesOfPSB2 or 'pdb'+PDBid+'.ent' in filesOfPSB2:
+                pass
+            else:
+                print(file)
+
+                command='gzip -d ../PDB2/'+file
+                os.system(command)
 
