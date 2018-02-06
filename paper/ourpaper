@@ -1,0 +1,28 @@
+	Deep machine learning has been widely used in all kinds of research fields. Some machine learning methods such as artificial neural network (ANN) and support vector machine (SVM) are currently using in biological research, like processing clinical data for diagnosis of diseases (Chen J, et al., 2014) or classification of biomolecules (Zheng Y, 2011). However, natural organisms mainly use sequences such as DNA and protein to store and convey information, while current methods like ANN and SVM are not suitable for handling sequences. Fortunately, the new method recurrent neural networks (RNN) with long short term memory cell (LSTM) has shown good performance in treating sequential problems. LSTM had already been introduced in biological research and achieved great successes in analyzing sequential data of protein for secondary structure prediction (Søren Kaae Sønderby, 2015) and subcellular localization (Nielsen H, 2015). These results demonstrate the great potential of LSTM networks in mining information from biological sequences.
+	Disulfide bonds, also known as SS-bonds, are bridges between the thiol groups of two peptidyl-cysteine residues. This kind of bond can produce stable protein multimers or contribute to protein folding and stability. Thus, disulfide bridges are crucial to the formation of tertiary and quaternary structure of proteins (Anfinsen CB, 1973). What's more, disulfide bonds can even determine functions of proteins by forming active sites for enzymes and contributing to proteins' physical properties such as thermodynamic stability (Fass D, 2012). Therefore, correct prediction of disulfide bonds in proteins can benefit researchers in both structural modeling and functional predicting. 
+   In the past three decades, more and more methods were used in predicting disulfide bonds. 
+
+
+In this project, we first transferred protein sequences into protein-vectors (ProtVec) as training data (Asgari E, 2015). ProtVec with indexes was then processed by bidirectional long short term memory network (BLSTM) (Schuster M, 1997).
+
+
+Methods
+Dataset
+The training dataset used in this paper is generated from PISCES on 05/02/2018(G. Wang, et al. 2003). The configuration we used is list below: pair-wised sequence identity less than 25%, seqeunce length between 40 and 10000, the cutoff of resolution is 3.0 and the R-factor value is 1.0  After search against the whole Protein Data Bank, the list of Id of 13000 chains are remained. Than we use DSSP program() to convert pdb file to dssp file from which we get the disuffle bonds coordination and proteins sequences.  After that, PSI-BLAST are used to search agaist the swissprot non-redandant database, and generate pssm matrix to represent  each protein chains. We also exclude the sequence longer than 1000 amino acid and the sequences contain inter-chain Disuffide Bonds.  Moveover, sequence contains no Cysteines or contain one Cys residues are also excluded. After all those filter procedure, 7000 sequence are reminded as final training dataset.
+
+position specific similarity matrix
+position specific similarity matrix（PSSM）is used to represent the sequence information, from 's research, PSSM can significantly improve the overall predcition accuracy of state of cys. In this paper, we explore the improvement from  using PSSM to represent preoteins seqeunce. We compare PSSM method and simply using onehot method the representation sequance information. table 1 is the performance when used different coding method.........
+
+  
+
+
+	This paper reveals a new method of using BLSTM to predict disulfide bonds based on sequences of proteins. This technique may benefit the research of structural biology and drug development.
+
+[] Chen J, Pan Q S, Hong W D, et al. Use of an artificial neural network to predict risk factors of nosocomial infection in lung cancer patients.[J]. Asian Pacific Journal of Cancer Prevention Apjcp, 2014, 15(13):5349.
+[] Zhang Y, Yang Y, Zhang H, et al. Prediction of novel pre-microRNAs with high accuracy through boosting and SVM[J]. Bioinformatics, 2011, 27(10):1436-1437.
+[] Søren Kaae Sønderby, Winther O. Protein Secondary Structure Prediction with Long Short Term Memory Networks[J]. Computer Science, 2015.
+[] Nielsen H, Winther O. Convolutional LSTM Networks for Subcellular Localization of Proteins[C]// International Conference on Algorithms for Computational Biology. Springer-Verlag New York, Inc. 2015:68-80.
+[] Anfinsen CB. Principles that govern the folding of protein chains.[J]. Science (New York, N.Y.), 1973, 181(4096):223-30.
+[]Fass D. Disulfide bonding in protein biophysics[J]. Annual Review of Biophysics, 2012, 41(41):63-79.
+[] Asgari E, Mofrad M R K. ProtVec: A Continuous Distributed Representation of Biological Sequences[J]. Computer Science, 2015, 10(11):e0141287.
+[] Schuster M, Paliwal K K. Bidirectional recurrent neural networks[M]. IEEE Press, 1997.
