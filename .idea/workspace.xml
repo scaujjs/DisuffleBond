@@ -1,17 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/src/helper.py" description="Xs=np.load(pOOD+'data/trainSStage1OneHot/X'+str(in..." line="518" />
-    <bookmark url="file://$PROJECT_DIR$/src/helper.py" description="Ts=np.load(pOOD+'data/trainSStage1OneHot/T'+str(in..." line="519" />
+    <bookmark url="file://$PROJECT_DIR$/src/helper.py" description="Xs=np.load(pOOD+'data/trainSStage1OneHot/X'+str(in..." line="106" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a2c22180-3c02-4a23-a179-5ae44d3b6053" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/data/newBondsFromPDBculled25" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/data/newSeqFromPDBculled25" />
-      <change beforePath="$PROJECT_DIR$/src/LowerIdcleanData.py" afterPath="$PROJECT_DIR$/src/LowerIdcleanData.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/src/bilstm.py" afterPath="$PROJECT_DIR$/src/bilstm.py" />
       <change beforePath="$PROJECT_DIR$/src/helper.py" afterPath="$PROJECT_DIR$/src/helper.py" />
-      <change beforePath="$PROJECT_DIR$/src/testOn3stage.py" afterPath="$PROJECT_DIR$/src/testOn3stage.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,20 +21,46 @@
       <file leaf-file-name="bilstm.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bilstm.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="52">
-              <caret line="217" column="31" lean-forward="true" selection-start-line="217" selection-start-column="31" selection-end-line="217" selection-end-column="31" />
+            <state relative-caret-position="124">
+              <caret line="180" column="77" lean-forward="false" selection-start-line="180" selection-start-column="31" selection-end-line="180" selection-end-column="77" />
               <folding>
                 <element signature="e#0#30#0" expanded="true" />
+                <element signature="e#4095#4436#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LowerIdcleanData.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py">
+      <file leaf-file-name="helper.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/helper.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
-              <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+            <state relative-caret-position="7146">
+              <caret line="577" column="18" lean-forward="false" selection-start-line="577" selection-start-column="18" selection-end-line="577" selection-end-column="18" />
+              <folding>
+                <element signature="e#1#10#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PSSMForProject.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PSSMForProject.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="732">
+              <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+                <element signature="e#342#1228#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="polarNhydropho.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/polarNhydropho.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="126">
+              <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -74,14 +96,34 @@
         <option value="$PROJECT_DIR$/src/SmoothedPSSM.py" />
         <option value="$PROJECT_DIR$/src/helper.py" />
         <option value="$PROJECT_DIR$/PSSMForProject.py" />
+        <option value="$PROJECT_DIR$/src/polarNhydropho.py" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="79" />
-    <option name="y" value="-4" />
-    <option name="width" value="1287" />
-    <option name="height" value="761" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="90" />
+    <option name="y" value="100" />
+    <option name="width" value="1283" />
+    <option name="height" value="744" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+          <State>
+            <id>Python</id>
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>PyArgumentListInspection</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -99,6 +141,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,12 +158,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="SearchEverywhereHistoryKey" value="patt&#9;null&#9;null" />
+    <property name="SearchEverywhereHistoryKey" value="testget4&#9;null&#9;null&#10;patt&#9;null&#9;null" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -135,7 +177,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.PSSMForProject">
+  <component name="RunManager" selected="Python.polarNhydropho">
     <configuration name="LowerIdcleanData" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -172,7 +214,7 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="testOn3stage" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="polarNhydropho" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -184,7 +226,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="PycharmProjects" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/testOn3stage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/polarNhydropho.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -227,19 +269,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Python.testOn3stage" />
-      <item index="1" class="java.lang.String" itemvalue="Python.testOnSP39" />
-      <item index="2" class="java.lang.String" itemvalue="Python.LowerIdcleanData" />
-      <item index="3" class="java.lang.String" itemvalue="Python.translateModel" />
-      <item index="4" class="java.lang.String" itemvalue="Python.PSSMForProject" />
+      <item index="0" class="java.lang.String" itemvalue="Python.testOnSP39" />
+      <item index="1" class="java.lang.String" itemvalue="Python.LowerIdcleanData" />
+      <item index="2" class="java.lang.String" itemvalue="Python.translateModel" />
+      <item index="3" class="java.lang.String" itemvalue="Python.PSSMForProject" />
+      <item index="4" class="java.lang.String" itemvalue="Python.polarNhydropho" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Python.PSSMForProject" />
-        <item index="1" class="java.lang.String" itemvalue="Python.LowerIdcleanData" />
-        <item index="2" class="java.lang.String" itemvalue="Python.translateModel" />
-        <item index="3" class="java.lang.String" itemvalue="Python.testOnSP39" />
-        <item index="4" class="java.lang.String" itemvalue="Python.testOn3stage" />
+        <item index="0" class="java.lang.String" itemvalue="Python.polarNhydropho" />
+        <item index="1" class="java.lang.String" itemvalue="Python.PSSMForProject" />
+        <item index="2" class="java.lang.String" itemvalue="Python.LowerIdcleanData" />
+        <item index="3" class="java.lang.String" itemvalue="Python.translateModel" />
+        <item index="4" class="java.lang.String" itemvalue="Python.testOnSP39" />
       </list>
     </recent_temporary>
   </component>
@@ -260,15 +302,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
-    <editor active="true" />
+    <frame x="90" y="100" width="1283" height="744" extended-state="0" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25273865" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2563492" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27838257" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28780487" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -289,42 +330,27 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/testOn3stage.py</url>
-          <line>108</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/PSSMForProject.py</url>
+          <line>23</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/SmoothedPSSM.py</url>
-          <line>53</line>
-          <option name="timeStamp" value="8" />
+          <url>file://$PROJECT_DIR$/PSSMForProject.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/helper.py</url>
+          <line>604</line>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="16" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2358">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
     <entry file="file://$PROJECT_DIR$/src/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4590">
@@ -332,17 +358,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#2743#2823#0" expanded="false" />
-            <element signature="e#2856#3196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py" />
     <entry file="file://$PROJECT_DIR$/src/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11700">
@@ -350,48 +366,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2358">
-          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39_BOND/AERA_AERHY">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
+    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py" />
+    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt" />
+    <entry file="file://$PROJECT_DIR$/test/SP39_BOND/AERA_AERHY" />
+    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt" />
+    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv" />
     <entry file="file://$PROJECT_DIR$/src/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -399,107 +379,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1151">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#2743#2823#0" expanded="false" />
-            <element signature="e#2856#3196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="76" column="26" lean-forward="false" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="181">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1368">
-          <caret line="76" column="26" lean-forward="false" selection-start-line="76" selection-start-column="26" selection-end-line="76" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="14" lean-forward="false" selection-start-line="29" selection-start-column="14" selection-end-line="29" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1170">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#2743#2823#0" expanded="false" />
-            <element signature="e#2856#3196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2358">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
+    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py" />
+    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py" />
+    <entry file="file://$PROJECT_DIR$/src/cleanData.py" />
+    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py" />
+    <entry file="file://$PROJECT_DIR$/src/cleanData.py" />
+    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py" />
+    <entry file="file://$PROJECT_DIR$/src/cleanData.py" />
+    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py" />
+    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv" />
+    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt" />
+    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py" />
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
     <entry file="file://$PROJECT_DIR$/src/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4590">
@@ -507,17 +399,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="55" column="0" lean-forward="false" selection-start-line="55" selection-start-column="0" selection-end-line="55" selection-end-column="0" />
-          <folding>
-            <element signature="e#2743#2823#0" expanded="false" />
-            <element signature="e#2856#3196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py" />
     <entry file="file://$PROJECT_DIR$/src/helper.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="11700">
@@ -525,73 +407,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="true" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2358">
-          <caret line="159" column="0" lean-forward="true" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39_BOND/AERA_AERHY">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="true" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="1" lean-forward="false" selection-start-line="0" selection-start-column="1" selection-end-line="0" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/SP39.fasta">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="12" lean-forward="false" selection-start-line="1" selection-start-column="12" selection-end-line="1" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1151">
-          <caret line="159" column="0" lean-forward="false" selection-start-line="159" selection-start-column="0" selection-end-line="159" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
-          <folding>
-            <element signature="e#2743#2823#0" expanded="false" />
-            <element signature="e#2856#3196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
+    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py" />
+    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt" />
+    <entry file="file://$PROJECT_DIR$/test/SP39_BOND/AERA_AERHY" />
+    <entry file="file://$PROJECT_DIR$/data/stage3Inp/Mix.txt" />
+    <entry file="file://$PROJECT_DIR$/data/protVec_100d_3grams.csv" />
+    <entry file="file://$PROJECT_DIR$/test/SP39.fasta" />
+    <entry file="file://$PROJECT_DIR$/src/testOnSP39.py" />
+    <entry file="file://$PROJECT_DIR$/src/testOn3stage.py" />
     <entry file="file:///usr/local/lib/python3.5/dist-packages/keras/layers/recurrent.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -613,76 +437,56 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/translateModel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="60" column="50" lean-forward="false" selection-start-line="60" selection-start-column="50" selection-end-line="60" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="43" column="8" lean-forward="false" selection-start-line="43" selection-start-column="8" selection-end-line="43" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/translateModel.py" />
+    <entry file="file://$PROJECT_DIR$/src/cleanData.py" />
     <entry file="file://$PROJECT_DIR$/src/PSSMZou.py" />
-    <entry file="file://$PROJECT_DIR$/src/translateModel.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SmoothedPSSM.py">
+    <entry file="file://$PROJECT_DIR$/src/translateModel.png" />
+    <entry file="file://$PROJECT_DIR$/src/SmoothedPSSM.py" />
+    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py" />
+    <entry file="file://$PROJECT_DIR$/SmoothedPSSM.py" />
+    <entry file="file://$PROJECT_DIR$/LowerIdcleanData.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="68" column="12" lean-forward="false" selection-start-line="68" selection-start-column="12" selection-end-line="68" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/helper.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="515" column="15" lean-forward="false" selection-start-line="515" selection-start-column="15" selection-end-line="515" selection-end-column="15" />
-          <folding />
+        <state relative-caret-position="234">
+          <caret line="14" column="11" lean-forward="false" selection-start-line="14" selection-start-column="11" selection-end-line="14" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/bilstm.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="217" column="31" lean-forward="true" selection-start-line="217" selection-start-column="31" selection-end-line="217" selection-end-column="31" />
+        <state relative-caret-position="124">
+          <caret line="180" column="77" lean-forward="false" selection-start-line="180" selection-start-column="31" selection-end-line="180" selection-end-column="77" />
           <folding>
             <element signature="e#0#30#0" expanded="true" />
+            <element signature="e#4095#4436#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/helper.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7146">
+          <caret line="577" column="18" lean-forward="false" selection-start-line="577" selection-start-column="18" selection-end-line="577" selection-end-column="18" />
+          <folding>
+            <element signature="e#1#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/PSSMForProject.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        <state relative-caret-position="732">
+          <caret line="87" column="26" lean-forward="true" selection-start-line="87" selection-start-column="26" selection-end-line="87" selection-end-column="26" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#342#1228#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SmoothedPSSM.py">
+    <entry file="file://$PROJECT_DIR$/src/polarNhydropho.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="49" column="29" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="49" selection-end-column="29" />
-          <folding>
-            <element signature="e#40#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/LowerIdcleanData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="10" column="25" lean-forward="true" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
+        <state relative-caret-position="126">
+          <caret line="7" column="16" lean-forward="false" selection-start-line="7" selection-start-column="16" selection-end-line="7" selection-end-column="16" />
           <folding />
         </state>
       </provider>
